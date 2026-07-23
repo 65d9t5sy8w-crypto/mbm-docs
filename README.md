@@ -1,23 +1,42 @@
-# MBM Docs
+# MBM Cursor Drop 01 — Executable Foundation
 
-Architecture, doctrine, and implementation documentation for MBM systems.
+This repository is the first executable baseline for MBM.
 
-## Scope
+## Included
+- FastAPI service
+- PostgreSQL-ready configuration
+- SQLAlchemy session layer
+- Provider-neutral contracts
+- Projection, settlement, learning, dashboard, and governance package boundaries
+- Docker and Docker Compose
+- CI workflow
+- Smoke tests
+- Architecture documentation
+- Durable agent instructions
 
-- Environment-state analysis
-- Resource Matrix doctrine
-- Telemetry architecture
-- Deterministic governance
-- Replayable system design
-- Riot integration documentation
+## Quick start
 
-## Purpose
+```bash
+cp .env.example .env
+docker compose up --build
+```
 
-MBM Docs serves as the documentation and specification layer for MBM telemetry and analytical systems.
+Open:
 
-Includes conceptual doctrine, operational matrices, architecture references, and implementation guidance.
+- API root: http://localhost:8000
+- Status: http://localhost:8000/api/status
+- OpenAPI: http://localhost:8000/docs
 
-## Status
+## Local development
 
-Active documentation layer.
-Expanding alongside telemetry and classification engines.
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+pytest
+uvicorn mbm.api.main:app --reload
+```
+
+## Current scope
+
+Drop 01 establishes the universal runtime foundation. It does not yet implement the full Revision 9 CS2 projection subsystem.

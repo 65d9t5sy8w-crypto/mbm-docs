@@ -1,0 +1,31 @@
+services:
+  api:
+    build: .
+    environment:
+      MBM_ENVIRONMENT: development
+      MBM_DATABASE_URL: postgresql+psycopg://mbm:mbm@db:5432/mbm
+      MBM_LOG_LEVEL: INFO
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: mbm
+      POSTGRES_USER: mbm
+      POSTGRES_PASSWORD: mbm
+    ports:
+      - "5432:5432"
+    volumes:
+      - mbm_postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mbm -d mbm"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+volumes:
+  mbm_postgres:
