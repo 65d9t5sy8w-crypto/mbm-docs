@@ -17,6 +17,10 @@ MBM Docs serves as the documentation and specification layer for MBM telemetry a
 
 Includes conceptual doctrine, operational matrices, architecture references, and implementation guidance.
 
+## Documents
+
+- [MBM Cursor First Install — Revision 8 (Locked Baseline)](docs/architecture/MBM_CURSOR_FIRST_INSTALL_REV8.md)
+
 ## Status
 
 Active documentation layer.
